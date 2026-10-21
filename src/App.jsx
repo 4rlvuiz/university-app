@@ -1,31 +1,74 @@
+import "./App.css";
+import Header from "./components/Header.jsx";
+import Navbar from "./components/Navbar.jsx";
+import StudentCard from "./components/StudentCard.jsx";
+import Footer from "./components/Footer.jsx";
+import studentImage from "./assets/student.jpg";
 
-import './App.css'
+// Tableau contenant plusieurs étudiants (comme demandé dans le TP 2)
+const etudiants = [
+  {
+    prenom: "Slim",
+    nom: "Boubaker",
+    email: "slimboubaker@gmail.com",
+    telephone: "+216 99 999 999",
+    filiere: "Génie Logiciel et Systèmes d'Information",
+    anneeEtude: "2ème année",
+    groupe: "GLSI 2",
+    ville: "Mahdia",
+    image: studentImage,
+  },
+  {
+    prenom: "Sarra",
+    nom: "Trabelsi",
+    email: "sarra.trabelsi@gmail.com",
+    telephone: "+216 22 345 678",
+    filiere: "Génie Logiciel et Systèmes d'Information",
+    anneeEtude: "2ème année",
+    groupe: "GLSI 1",
+    ville: "Sousse",
+    image: studentImage,
+  },
+  {
+    prenom: "Mariem",
+    nom: "Khalfallah",
+    email: "mariem.khalfallah@gmail.com",
+    telephone: "+216 27 567 890",
+    filiere: "Génie Logiciel et Systèmes d'Information",
+    anneeEtude: "2ème année",
+    groupe: "GLSI 2",
+    ville: "Tunis",
+    image: studentImage,
+  }
+];
 
 function App() {
   return (
-    <div>
-       <img
-        src="/student.jpg"
-        alt="Photo de l'étudiant"
-        className="student-image"
-      />
-      <h1>Fiche étudiant</h1>
+    <div className="container">
+      <Header />
+      <Navbar />
 
-      <p>Nom & Prénom : Jmil Amine </p>
-      <p>Email : aminjmil2@gmail.com</p>
-      <p>Filiere : GLSI </p>
-      <p>Group : GLSI2 A</p>
-      <p>Établissement : ISIMA</p>
-      <p>Ville : Mahdia</p>
+      <main>
+        {/* Utilisation de map() pour générer les fiches étudiants avec une key unique */}
+        {etudiants.map((etudiant) => (
+          <StudentCard
+            key={etudiant.email}
+            prenom={etudiant.prenom}
+            nom={etudiant.nom}
+            email={etudiant.email}
+            telephone={etudiant.telephone}
+            filiere={etudiant.filiere}
+            anneeEtude={etudiant.anneeEtude}
+            groupe={etudiant.groupe}
+            ville={etudiant.ville}
+            image={etudiant.image}
+          />
+        ))}
+      </main>
 
-      <a
-        className="contact-button"
-        href="mailto:aminjmil2@gmail.com"
-      >
-        Contacter
-      </a>
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
